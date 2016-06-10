@@ -20,7 +20,9 @@ class CompanyController extends Controller
             '1.1.3',
             'se',
             $request->city,
-            $request->query
+            $request->query,
+            $request->from,
+            $request->to
         );
 
         return $eniro->companies();

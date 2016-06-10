@@ -9,8 +9,10 @@ class Eniro {
     private $country;
     private $city;
     private $query;
+    private $from;
+    private $to;
 
-    public function __construct($profile, $key, $version, $country, $city, $query)
+    public function __construct($profile, $key, $version, $country, $city, $query, $from, $to)
     {
         $this->baseUrl = 'http://api.eniro.com/cs/proximity/basic?';
         $this->profile = $profile;
@@ -19,6 +21,8 @@ class Eniro {
         $this->country = $country;
         $this->city = $city;
         $this->query = $query;
+        $this->from = $from;
+        $this->to = $to;
     }
 
     public function companies()
@@ -30,7 +34,9 @@ class Eniro {
             '&country=' . $this->country .
             '&version=' . $this->version .
             '&search_word=' . $this->query .
-            '&geo_area=' . $this->city
+            '&geo_area=' . $this->city .
+            '&from_list=' . $this->from .
+            '&to_list=' . $this->to
             ), true);
 
         return $response;
