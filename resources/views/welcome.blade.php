@@ -2,44 +2,19 @@
 <html>
     <head>
         <title>Laravel</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+        
     </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+        <div class="ui secondary menu grid stackable" style="padding:1em;">
+          <div class="active item">Dashboard</div>
+          <a class="item">Meetings</a>
+          <a class="item">Team</a>
+          <div class="right menu">
+            <a class="item">Profile</a>
+          </div>
         </div>
+         <router-view></router-view>
+         <script type="text/javascript" src="/js/main.js"></script>
     </body>
 </html>
