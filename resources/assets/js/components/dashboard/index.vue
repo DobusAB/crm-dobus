@@ -1,13 +1,24 @@
 <template>
-	<div class="ui grid container">
-	<div class="row">
-		<div class="sixteen wide column">
-			<div class="ui icon input search">
-			  <input type="text" placeholder="Search...">
-			  <i class="inverted circular search link icon"></i>
-			</div>
-		</div>
-	</div>
-	  
-	</div>
+	<dashboard></dashboard>
 </template>
+
+<script>
+import dashboard from './dashboard.vue'
+
+export default {
+  data () {
+    return {
+     
+    }
+  },
+  components: {
+    'dashboard': dashboard,
+  },
+  methods: {
+   
+  },
+  ready: function(){
+
+  }
+}
+</script>
