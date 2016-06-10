@@ -14806,7 +14806,9 @@ exports.default = {
     return {
       items: [],
       city: "halmstad",
-      startIndex: 1
+      startIndex: 1,
+      isA: true,
+      isB: false
     };
   },
 
@@ -14842,15 +14844,15 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"main-container\">\n\t<div class=\"lead-wrapper\">\n\n\t<div class=\"lead\" v-for=\"item in items\" draggable=\"true\">\n\t\t<h2>{{item.companyInfo.companyName}}</h2>\n\t\t<ul>\n\t\t\t<li v-if=\"item.address.postArea\">{{item.address.postArea}} {{item.address.postCode}} {{item.address.streetName}}</li>\n\t\t\t<li v-if=\"item.companyInfo.orgNumber\">{{item.companyInfo.orgNumber}}</li>\n\n\t\t\t<li v-if=\"item.companyInfo.companyText\">{{item.companyInfo.companyText}}</li>\n\t\t</ul>\n\t</div>\n\t<button v-on:click=\"nextPage\" class=\"ui button\">Hämta fler!</button>\n\t</div>\n\n\t<div class=\"lead-wrapper\" @dragover.prevent=\"\" @drop=\"drop\">\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n\t<div class=\"main-container\" @dragover.prevent=\"\" @drop=\"drop\">\n  <button class=\"lead-button secondary\">Toggle Meny</button>\n\t\t<div class=\"lead-drawer\">\n      <div class=\"lead-search-header\">\n        <select>\n          <option> 🙏 Halmstad</option>\n        </select>\n        <select>\n          <option> 🙆Frisör</option>\n        </select>\n        <button class=\"lead-button block-button primary\">Sök leads</button>\n      </div>\n      <p class=\"info-text\">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>\n\n  \t\t<div class=\"lead-card\" v-for=\"item in items\" draggable=\"true\">\n        <span>🙆</span>\n  \t\t\t<h3>{{item.companyInfo.companyName}}</h3>\n  \t\t\t<p class=\"info-text\" v-if=\"item.address.postArea\">{{item.address.streetName}}</p>\n  \t\t\t<p v-if=\"item.companyInfo.companyText\">{{item.companyInfo.companyText}}</p>\n        <button class=\"lead-button secondary\">Spana på Allabolag.se</button>\n  \t\t</div>\n  \t\t<button class=\"lead-button block-button primary\" v-on:click=\"nextPage\">Hämta fler!</button>\n\t\t</div>\n\n\t\t<!--<div class=\"lead-wrapper\" @dragover.prevent @drop=\"drop\">\t\n\t\t</div>-->\n\t\t\t\n\t\t\t\n\t\t</div>\n\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-62a258d6", module.exports)
+    hotAPI.createRecord("_v-0b167fbc", module.exports)
   } else {
-    hotAPI.update("_v-62a258d6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-0b167fbc", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"vue":5,"vue-hot-reload-api":2}],7:[function(require,module,exports){
@@ -14884,9 +14886,9 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-11645f53", module.exports)
+    hotAPI.createRecord("_v-135e36fa", module.exports)
   } else {
-    hotAPI.update("_v-11645f53", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-135e36fa", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"./dashboard.vue":6,"vue":5,"vue-hot-reload-api":2}],8:[function(require,module,exports){

@@ -1,30 +1,34 @@
 <template>
-	<div class="main-container">
-		<div class="lead-wrapper">
+	<div class="main-container" @dragover.prevent @drop="drop">
+  <button class="lead-button secondary">Toggle Meny</button>
+		<div class="lead-drawer">
+      <div class="lead-search-header">
+        <select>
+          <option> &#x1f64f; Halmstad</option>
+        </select>
+        <select>
+          <option> &#x1f646;Frisör</option>
+        </select>
+        <button class="lead-button block-button primary">Sök leads</button>
+      </div>
+      <p class="info-text">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>
 
-		<div class="lead" v-for="item in items" draggable="true">
-			<h2>{{item.companyInfo.companyName}}</h2>
-			<ul>
-				<li v-if="item.address.postArea">{{item.address.postArea}} {{item.address.postCode}} {{item.address.streetName}}</li>
-				<li v-if="item.companyInfo.orgNumber">{{item.companyInfo.orgNumber}}</li>
-
-				<li v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</li>
-			</ul>
-		</div>
-		<button v-on:click="nextPage"class="ui button">Hämta fler!</button>
+  		<div class="lead-card" v-for="item in items" draggable="true">
+        <span>&#x1f646;</span>
+  			<h3>{{item.companyInfo.companyName}}</h3>
+  			<p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
+  			<p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
+        <button class="lead-button secondary">Spana på Allabolag.se</button>
+  		</div>
+  		<button class="lead-button block-button primary" v-on:click="nextPage">Hämta fler!</button>
 		</div>
 
-		<div class="lead-wrapper" @dragover.prevent @drop="drop">	
-		</div>
-		<div class="lead-wrapper">
-		</div>
-		<div class="lead-wrapper">
-		</div>
-		<div class="lead-wrapper">
+		<!--<div class="lead-wrapper" @dragover.prevent @drop="drop">	
+		</div>-->
 			
 			
 		</div>
-	</div>
+
 </template>
 <script>
 export default {
@@ -32,7 +36,9 @@ export default {
     return {
      items: [],
      city: "halmstad",
-     startIndex: 1
+     startIndex: 1,
+     isA: true,
+     isB: false
     }
   },
   methods: {
