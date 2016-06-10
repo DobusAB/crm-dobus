@@ -1,6 +1,6 @@
 <template>
 	<div class="main-container" @dragover.prevent @drop="drop">
-  <button class="lead-button secondary">Toggle Meny</button>
+  <button class="lead-button secondary">Toggle menu</button>
 		<div class="lead-drawer">
       <div class="lead-search-header">
         <select>
