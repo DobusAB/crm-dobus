@@ -37,7 +37,7 @@ class Eniro {
             '&geo_area=' . $this->city .
             '&from_list=' . $this->from .
             '&to_list=' . $this->to
-            ), true);
+        ), true);
 
         return $response;
     }
