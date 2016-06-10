@@ -14832,6 +14832,9 @@ exports.default = {
       }, function (response) {
         // error callback
       }.bind(this));
+    },
+    drop: function drop(ev) {
+      console.log(ev.target);
     }
   },
   ready: function ready() {
@@ -14839,7 +14842,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"main-container\">\n\t<div class=\"lead-wrapper\">\n\n\t<div class=\"lead\" v-for=\"item in items\">\n\t\t<h2>{{item.companyInfo.companyName}}</h2>\n\t\t<ul>\n\t\t\t<li v-if=\"item.phoneNumbers[0].phoneNumber\">{{item.phoneNumbers[0].phoneNumber}}</li>\n\t\t\t<li v-if=\"item.address.postArea\">{{item.address.postArea}} {{item.address.postCode}} {{item.address.streetName}}</li>\n\t\t\t<li v-if=\"item.companyInfo.orgNumber\">{{item.companyInfo.orgNumber}}</li>\n\n\t\t\t<li v-if=\"item.companyInfo.companyText\">{{item.companyInfo.companyText}}</li>\n\t\t</ul>\n\t</div>\n\n\t<button v-on:click=\"nextPage\" class=\"ui button\">Hämta fler!</button>\n\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"main-container\">\n\t<div class=\"lead-wrapper\">\n\n\t<div class=\"lead\" v-for=\"item in items\" draggable=\"true\">\n\t\t<h2>{{item.companyInfo.companyName}}</h2>\n\t\t<ul>\n\t\t\t<li v-if=\"item.address.postArea\">{{item.address.postArea}} {{item.address.postCode}} {{item.address.streetName}}</li>\n\t\t\t<li v-if=\"item.companyInfo.orgNumber\">{{item.companyInfo.orgNumber}}</li>\n\n\t\t\t<li v-if=\"item.companyInfo.companyText\">{{item.companyInfo.companyText}}</li>\n\t\t</ul>\n\t</div>\n\t<button v-on:click=\"nextPage\" class=\"ui button\">Hämta fler!</button>\n\t</div>\n\n\t<div class=\"lead-wrapper\" @dragover.prevent=\"\" @drop=\"drop\">\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

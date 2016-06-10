@@ -2,31 +2,23 @@
 	<div class="main-container">
 		<div class="lead-wrapper">
 
-		<div class="lead" v-for="item in items">
+		<div class="lead" v-for="item in items" draggable="true">
 			<h2>{{item.companyInfo.companyName}}</h2>
 			<ul>
-				<li v-if="item.phoneNumbers[0].phoneNumber">{{item.phoneNumbers[0].phoneNumber}}</li>
 				<li v-if="item.address.postArea">{{item.address.postArea}} {{item.address.postCode}} {{item.address.streetName}}</li>
 				<li v-if="item.companyInfo.orgNumber">{{item.companyInfo.orgNumber}}</li>
 
 				<li v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</li>
 			</ul>
 		</div>
-
 		<button v-on:click="nextPage"class="ui button">Hämta fler!</button>
+		</div>
 
+		<div class="lead-wrapper" @dragover.prevent @drop="drop">	
 		</div>
 		<div class="lead-wrapper">
-			
-			
 		</div>
 		<div class="lead-wrapper">
-			
-			
-		</div>
-		<div class="lead-wrapper">
-			
-			
 		</div>
 		<div class="lead-wrapper">
 			
@@ -67,6 +59,9 @@ export default {
           // error callback
       }.bind(this));
    
+   },
+   drop: function(ev){
+   		console.log(ev.target);
    }
   },
   ready: function(){
