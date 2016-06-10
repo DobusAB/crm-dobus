@@ -13138,18 +13138,54 @@ setTimeout(function () {
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":1}],5:[function(require,module,exports){
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"ui grid container\">\n<div class=\"row\">\n\t<div class=\"sixteen wide column\">\n\t\t<div class=\"ui icon input search\">\n\t\t  <input type=\"text\" placeholder=\"Search...\">\n\t\t  <i class=\"inverted circular search link icon\"></i>\n\t\t</div>\n\t</div>\n</div>\n  \n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\nhello world\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-135e36fa", module.exports)
+    hotAPI.createRecord("_v-62a258d6", module.exports)
   } else {
-    hotAPI.update("_v-135e36fa", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-62a258d6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"vue":4,"vue-hot-reload-api":2}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _dashboard = require('./dashboard.vue');
+
+var _dashboard2 = _interopRequireDefault(_dashboard);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {};
+  },
+
+  components: {
+    'dashboard': _dashboard2.default
+  },
+  methods: {},
+  ready: function ready() {}
+};
+if (module.exports.__esModule) module.exports = module.exports.default
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<dashboard></dashboard>\n"
+if (module.hot) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  if (!module.hot.data) {
+    hotAPI.createRecord("_v-11645f53", module.exports)
+  } else {
+    hotAPI.update("_v-11645f53", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+  }
+})()}
+},{"./dashboard.vue":5,"vue":4,"vue-hot-reload-api":2}],7:[function(require,module,exports){
 'use strict';
 
 //browserify entrypoint..
@@ -13176,6 +13212,6 @@ router.redirect({
 
 router.start(App, 'body');
 
-},{"./components/dashboard/index.vue":5,"vue":4,"vue-router":3}]},{},[6]);
+},{"./components/dashboard/index.vue":6,"vue":4,"vue-router":3}]},{},[7]);
 
 //# sourceMappingURL=main.js.map
