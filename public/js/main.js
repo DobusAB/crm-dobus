@@ -13138,15 +13138,15 @@ setTimeout(function () {
 module.exports = Vue;
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":1}],5:[function(require,module,exports){
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\nhello world\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div class=\"main-container\">\n\t<div class=\"lead-wrapper\">\n\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\t<div class=\"lead\">\n\t\t<h2>Company Name</h2>\n\t\t<ul>\n\t\t\t<li>Company info</li>\n\t\t</ul>\n\t</div>\n\n\t<button class=\"ui button\">Hämta fler!</button>\n\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n\t<div class=\"lead-wrapper\">\n\t\t\n\t\t\n\t</div>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-62a258d6", module.exports)
+    hotAPI.createRecord("_v-0b167fbc", module.exports)
   } else {
-    hotAPI.update("_v-62a258d6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-0b167fbc", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"vue":4,"vue-hot-reload-api":2}],6:[function(require,module,exports){
@@ -13180,9 +13180,9 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-11645f53", module.exports)
+    hotAPI.createRecord("_v-135e36fa", module.exports)
   } else {
-    hotAPI.update("_v-11645f53", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-135e36fa", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"./dashboard.vue":5,"vue":4,"vue-hot-reload-api":2}],7:[function(require,module,exports){
