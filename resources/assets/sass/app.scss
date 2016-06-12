@@ -98,13 +98,12 @@ select {
 }
 
 .lead-button {
-	height:2.5em;
+	
 	width:auto;
 	font-weight:700;
 	font-size:1.3em;
 	font-family: $primary-font;
     border-radius: $border-radius;
-    padding: 0em $medium-padding;
     color:$white;
 	outline: none;
     appearance: none;
@@ -116,6 +115,25 @@ select {
 
 	&.primary {
 		@include setBgColorAndHover($turqoise);
+	}
+
+	&.large {
+
+	}
+
+	&.medium {
+		height:2.5em;
+		padding: 0em $medium-padding;
+	}
+
+	&.small {
+		padding: $small-padding;
+		font-size:0.9em;
+	}
+
+	&.small {
+		padding: $small-padding;
+		font-size:1.2em;
 	}
 
 	&.secondary {
@@ -203,6 +221,10 @@ select {
 		transform: translateX(450px);
 		transition:transform $transition-timing $transition-easing;
 
+		&.open {
+			transform: translateX(0px);
+		}
+
 		.lead-activity {
 			display:flex;
 			flex-direction: column;
@@ -242,6 +264,14 @@ select {
 		transform: translateX(-450px);
 		transition:transform $transition-timing $transition-easing;
 
+		&.open {
+			transform: translateX(0px);
+		}
+
+		.small-button {
+			
+		}
+
 		.lead-search-header {
 
 			padding:$medium-padding;
@@ -259,7 +289,6 @@ select {
 			.lead-button {
 				margin-top:$margin-top;
 			}
-
 
 		}
 
@@ -279,6 +308,44 @@ select {
 .container {
   margin: 0 auto;
   padding: $column-gutter*2;
+
+  .lead-header {
+  	padding:$small-padding;
+  	display:inline-flex;
+  	width:100%;
+  	justify-content: flex-start;
+
+  		.lead-filter-wrapper {
+  			padding:0.5em;
+  			display:flex;
+  			max-width:130px;
+
+  			.lead-filter {
+  				height:160px;
+	  			flex:1;
+	  			display:flex;
+	  			flex-direction: column;
+	  			align-items:center;
+	  			justify-content: center;
+	  			text-align:center;
+	  			margin-top:$margin-top;
+	  			background-color:$primary-color;
+	  			border-radius:$border-radius;
+	  			color:$white;
+
+	  			.info-text {
+	  				margin: 0.5em;
+	  				color:$white;
+	  			}
+
+	  			h2 {
+	  				font-size:3.5em;
+	  				margin:0em;
+	  			}
+  			}
+
+  		}
+  }
 
   .lead-card {
   	margin:0.75em auto;

@@ -8,7 +8,7 @@
         <select>
           <option> &#x1f646; - Frisör</option>
         </select>
-        <button class="lead-button block-button primary">Sök leads</button>
+        <button class="lead-button medium block-button primary">Sök leads</button>
       </div>
       <p class="info-text">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>
   		<div class="lead-card" v-for="item in items" draggable="true">
@@ -16,11 +16,12 @@
   			<h3>{{item.companyInfo.companyName}}</h3>
   			<p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
   			<p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
-        <button class="lead-button secondary">Spana på Allabolag.se</button>
+        <button class="lead-button medium secondary">Spana på Allabolag.se</button>
   		</div>
-  		<button class="lead-button block-button primary" v-on:click="nextPage">Hämta fler!</button>
+  		<button class="lead-button medium block-button primary" v-on:click="nextPage">Hämta fler!</button>
 		</div>
 
+    <!-- Add class '.open' to open the menu when a lead-card is pressed -->
     <div class="lead-detail">
         <div class="lead-card">
             <span>&#x1f646;</span>
@@ -30,7 +31,7 @@
               <p class="info-text">Här kan du lägga till uppgifter om din lead. Ju mer du skriver desto större är chansen att din lead nappar.</p>
               <input type="text" placeholder="Namn"></input>
               <input type="text" placeholder="Email"></input>
-              <button class="lead-button block-button primary">Spara uppgifter</button>
+              <button class="lead-button medium block-button primary">Spara uppgifter</button>
             </form>
         </div>
         <h3>Senaste händelserna</h3>
@@ -51,7 +52,13 @@
     <div class="container">
 
     <div class="row lead-header">
-      
+        <div class=" col-md-2 col-sm-4 col-xs-4 align-middle lead-filter-wrapper">
+          <div class="lead-filter">
+            <span>&#x1f646;</span>
+            <h2>5</h2>
+            <p class="info-text">Du har skickat 5 mail.</p>
+          </div>
+        </div>
     </div>
     <!--- Insert 4 leads in each row -->
   		<div class="row">
@@ -77,9 +84,7 @@ export default {
     return {
      items: [],
      city: "halmstad",
-     startIndex: 1,
-     isA: true,
-     isB: false
+     startIndex: 1
     }
   },
   methods: {

@@ -4,6 +4,7 @@
         <title>Laravel</title>
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
           (function(d) {
             var config = {

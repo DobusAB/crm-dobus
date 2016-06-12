@@ -39,13 +39,11 @@ select {
   margin-right: 1em; }
 
 .lead-button {
-  height: 2.5em;
   width: auto;
   font-weight: 700;
   font-size: 1.3em;
   font-family: "sofia-pro-soft";
   border-radius: 4px;
-  padding: 0em 1.5em;
   color: #FFFFFF;
   outline: none;
   appearance: none;
@@ -58,6 +56,15 @@ select {
     background-color: #50E3C2; }
     .lead-button.primary:hover {
       background-color: #45e1be; }
+  .lead-button.medium {
+    height: 2.5em;
+    padding: 0em 1.5em; }
+  .lead-button.small {
+    padding: 0.5em 1em;
+    font-size: 0.9em; }
+  .lead-button.small {
+    padding: 0.5em 1em;
+    font-size: 1.2em; }
   .lead-button.secondary {
     background-color: lightgray; }
     .lead-button.secondary:hover {
@@ -126,6 +133,8 @@ select {
     width: 450px;
     transform: translateX(450px);
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+    .main-container .lead-detail.open {
+      transform: translateX(0px); }
     .main-container .lead-detail .lead-activity {
       display: -ms-flexbox;
       display: flex;
@@ -164,6 +173,8 @@ select {
     width: 450px;
     transform: translateX(-450px);
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+    .main-container .lead-drawer.open {
+      transform: translateX(0px); }
     .main-container .lead-drawer .lead-search-header {
       padding: 1.5em;
       background: #4A90E2;
@@ -183,6 +194,41 @@ select {
 .container {
   margin: 0 auto;
   padding: 1rem; }
+  .container .lead-header {
+    padding: 0.5em 1em;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 100%;
+    -ms-flex-pack: start;
+    justify-content: flex-start; }
+    .container .lead-header .lead-filter-wrapper {
+      padding: 0.5em;
+      display: -ms-flexbox;
+      display: flex;
+      max-width: 130px; }
+      .container .lead-header .lead-filter-wrapper .lead-filter {
+        height: 160px;
+        -ms-flex: 1;
+        flex: 1;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 1em;
+        background-color: #4A90E2;
+        border-radius: 4px;
+        color: #FFFFFF; }
+        .container .lead-header .lead-filter-wrapper .lead-filter .info-text {
+          margin: 0.5em;
+          color: #FFFFFF; }
+        .container .lead-header .lead-filter-wrapper .lead-filter h2 {
+          font-size: 3.5em;
+          margin: 0em; }
   .container .lead-card {
     margin: 0.75em auto; }
     .container .lead-card:hover {
