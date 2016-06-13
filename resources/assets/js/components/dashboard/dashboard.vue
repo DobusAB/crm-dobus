@@ -1,6 +1,6 @@
 <template>
 	<div class="main-container" @dragover.prevent @drop="drop">
-		<div class="lead-drawer">
+		<div class="lead-drawer open">
       <div class="lead-search-header">
         <select>
           <option> &#x1f64f; - Halmstad</option>
@@ -17,6 +17,7 @@
   			<p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
   			<p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
         <button class="lead-button medium secondary">Spana på Allabolag.se</button>
+		<button v-on:click="addLead(item)" class="lead-button medium secondary">Lägg till lead</button>
   		</div>
   		<button class="lead-button medium block-button primary" v-on:click="nextPage">Hämta fler!</button>
 		</div>
@@ -41,10 +42,10 @@
             <span>&#x1f646;</span>
           </div>
           <div class="lead-activity-block">
-            
+
           </div>
           <div class="lead-activity-block">
-            
+
           </div>
         </div>
     </div>
@@ -62,11 +63,13 @@
     </div>
     <!--- Insert 4 leads in each row -->
   		<div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 align-middle"> 
+        <div v-for="lead in leads" class="col-sm-6 col-md-4 col-lg-3 align-middle">
           <div class="lead-card">
             <span>&#x1f646;</span>
-            <h3>Häftiga företaget</h3>
-            <p class="info-text">Glada gatan</p>
+            <h3>{{lead.company_name}}</h3>
+            <p class="info-text">{{lead.address}}</p>
+			<p class="info-text">{{lead.phone}}</p>
+			<p class="info-text">{{lead.email}}</p>
             <div class="lead-status-container align-center align-middle">
               <span class="emoji-icon">🙈</span>Inväntar svar
             </div>
@@ -82,12 +85,27 @@
 export default {
   data () {
     return {
+	 leads: [],
      items: [],
      city: "halmstad",
      startIndex: 1
     }
   },
   methods: {
+   getLeads: function(){
+	   this.$http({url: 'http://localhost:8000/api/leads', method: 'GET'}).then(function (response) {
+		 this.leads = response.data;
+	   }, function (response) {
+		 // error callback
+	 }.bind(this));
+   },
+   addLead: function(item){
+	this.$http.post('http://localhost:8000/api/lead', [item.companyInfo.companyName]).then(function (response) {
+		console.log(response);
+	}, function (response) {
+		//error callback
+	}.bind(this));
+   },
    getCompanies: function(){
    		this.$http({url: 'http://localhost:8000/api/companies?city='+this.city+'&query=frisör&from=1&to=25', method: 'GET'}).then(function (response) {
           this.items = response.data.adverts;
@@ -96,7 +114,7 @@ export default {
       }.bind(this));
    },
    nextPage: function(){
-   		
+
    		var startindex = this.startIndex += 25;
    		var endIndex = startindex + 24;
    		this.$http({url: 'http://localhost:8000/api/companies?city='+this.city+'&query=frisör&from='+startindex+'&to=' + endIndex, method: 'GET'}).then(function (response) {
@@ -110,7 +128,7 @@ export default {
       	}, function (response) {
           // error callback
       }.bind(this));
-   
+
    },
    drop: function(ev){
    		console.log(ev.target);
@@ -118,6 +136,7 @@ export default {
   },
   ready: function(){
   	this.getCompanies();
+	this.getLeads();
   }
 }
 </script>

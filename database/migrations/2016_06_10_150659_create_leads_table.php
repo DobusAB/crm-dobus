@@ -18,8 +18,8 @@ class CreateLeadsTable extends Migration
             $table->string('address');
             $table->string('corporate_identity_number');
             $table->string('phone');
-            $table->string('contact_person');
-            $table->string('email');
+            $table->string('contact_person')->nullable();
+            $table->string('email')->nullable();
             $table->string('status');
             $table->timestamps();
         });

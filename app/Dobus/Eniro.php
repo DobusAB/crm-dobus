@@ -25,7 +25,7 @@ class Eniro {
         $this->to = $to;
     }
 
-    public function companies()
+    public function getCompanies()
     {
         $response = json_decode(file_get_contents(
             $this->baseUrl .

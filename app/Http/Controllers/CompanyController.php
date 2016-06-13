@@ -10,6 +10,9 @@ use App\Dobus\Eniro;
 
 class CompanyController extends Controller
 {
+    /**
+     * Get info about companies
+     */
     public function index(Request $request)
     {
         $request = (object) $request->all();
@@ -25,6 +28,6 @@ class CompanyController extends Controller
             $request->to
         );
 
-        return $eniro->companies();
+        return $eniro->getCompanies();
     }
 }

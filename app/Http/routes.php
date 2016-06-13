@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'api'], function() {
     Route::get('companies', 'CompanyController@index');
+    Route::get('leads', 'LeadController@index');
+    Route::post('lead', 'LeadController@store');
 });
