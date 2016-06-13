@@ -8,6 +8,11 @@ $primary-color: #4A90E2;
 $turqoise: #50E3C2;
 $font-lightgray: #B2B2B2;
 
+$device-sm: 30em;
+$device-md: 50em;
+$device-lg: 72em;
+$column-gutter: 0.5rem;
+
 $margin-top: 1em;
 
 $transition-easing: cubic-bezier(0.770, 0.000, 0.175, 1.000);
@@ -44,6 +49,7 @@ $large-padding: 2em;
     }
 }
 
+
 *, *:after, *:before {
   box-sizing: border-box; 
 }
@@ -58,14 +64,6 @@ body, html {
 	font-family: $primary-font,sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-body {
-		&:hover {
-		.lead-drawer {
-			transform:translateX(0px);
-		}
-	}
 }
 
 select {
@@ -95,14 +93,17 @@ select {
 
 }
 
+.emoji-icon {
+	margin-right:$margin-top;
+}
+
 .lead-button {
-	height:2.5em;
+	
 	width:auto;
 	font-weight:700;
 	font-size:1.3em;
 	font-family: $primary-font;
     border-radius: $border-radius;
-    padding: 0em $medium-padding;
     color:$white;
 	outline: none;
     appearance: none;
@@ -114,6 +115,25 @@ select {
 
 	&.primary {
 		@include setBgColorAndHover($turqoise);
+	}
+
+	&.large {
+
+	}
+
+	&.medium {
+		height:2.5em;
+		padding: 0em $medium-padding;
+	}
+
+	&.small {
+		padding: $small-padding;
+		font-size:0.9em;
+	}
+
+	&.small {
+		padding: $small-padding;
+		font-size:1.2em;
 	}
 
 	&.secondary {
@@ -130,25 +150,127 @@ select {
 	}
 }
 
+.lead-card {
+	display:flex;
+	justify-content: center;
+	text-align: center;
+	align-items:center;
+	flex-direction:column;
+	border-radius: $border-radius;
+	border: $card-border;
+	background:$white;
+	padding:$medium-padding;
+	transition:box-shadow 0.2s;
+
+	form {
+		width:100%;
+
+		margin-top:$margin-top;
+
+		input {
+			width:100%;
+			height:40px;
+			padding:$small-padding;
+			border:none;
+			outline: none;
+			color:gray;
+			border-radius:$border-radius;
+			background-color:$lightgray;
+			margin-top:$margin-top;
+		}
+	}
+
+	.info-text {
+		margin: 0.2em;
+	}
+
+	h3 {
+		margin: 0.2em 0em 0em 0em;
+	}
+	.lead-button {
+		margin-top:$margin-top;
+	}
+
+	.lead-status-container {
+		background-color:$lightgray;
+		width:100%;
+		display:flex;
+		height:40px;
+		margin-top: $margin-top;
+		border-radius: $border-radius;
+	}
+
+}
+
 .main-container {
 
 	min-height:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
 
+
+	.lead-detail {
+		max-height:100vh;
+		min-height: 100vh;
+		position:fixed;
+		top:0;
+		right:0;
+		opacity:1;
+		padding:$large-padding;
+		background:$white;
+		overflow-y:scroll;
+		width:450px;
+		transform: translateX(450px);
+		transition:transform $transition-timing $transition-easing;
+
+		&.open {
+			transform: translateX(0px);
+		}
+
+		.lead-activity {
+			display:flex;
+			flex-direction: column;
+			align-items:flex-end;
+			
+			.lead-activity-block {
+				height:65px;
+				color:$white;
+				padding:$large-padding;
+				margin-top:$margin-top;
+				background-color:$primary-color;
+				border-radius: $border-radius;
+				display:flex;
+				flex-direction:row;
+				justify-content: flex-end;
+				align-items:center;
+
+				span {
+					margin-left:0.5em;
+					font-size:1.2em;
+				}
+			}
+		}
+	}
+	
 	.lead-drawer {
 		max-height:100vh;
 		min-height: 100vh;
 		position:fixed;
 		top:0;
 		left:0;
+		opacity:1;
 		padding:$large-padding;
 		background:$white;
 		overflow-y:scroll;
 		width:450px;
-		//transform: translateX(-450px);
+		transform: translateX(-450px);
 		transition:transform $transition-timing $transition-easing;
+
+		&.open {
+			transform: translateX(0px);
+		}
+
+		.small-button {
+			
+		}
 
 		.lead-search-header {
 
@@ -168,38 +290,14 @@ select {
 				margin-top:$margin-top;
 			}
 
-
 		}
 
 		.lead-card {
-			margin:2em auto;
-			display:flex;
-			justify-content: center;
-			text-align: center;
-			align-items:center;
-			flex-direction:column;
-			border-radius: $border-radius;
-			border: $card-border;
-			width:100%;
-			background:$white;
-			padding:$medium-padding;
-			transition:box-shadow 0.2s;
-			
-			&:hover {
 
+			margin:2em auto;
+			&:hover {
 				@include box_shadow(2);
 				cursor:pointer;
-			}
-
-			.info-text {
-				margin: 0.2em;
-			}
-
-			h3 {
-				margin: 0.2em 0em 0em 0em;
-			}
-			.lead-button {
-				margin-top:$margin-top;
 			}
 
 		}
@@ -207,6 +305,136 @@ select {
 
 }
 
+.container {
+  margin: 0 auto;
+  padding: $column-gutter*2;
+
+  .lead-header {
+  	padding:$small-padding;
+  	display:inline-flex;
+  	width:100%;
+  	justify-content: flex-start;
+
+  		.lead-filter-wrapper {
+  			padding:0.5em;
+  			display:flex;
+  			max-width:130px;
+
+  			.lead-filter {
+  				height:160px;
+	  			flex:1;
+	  			display:flex;
+	  			flex-direction: column;
+	  			align-items:center;
+	  			justify-content: center;
+	  			text-align:center;
+	  			margin-top:$margin-top;
+	  			background-color:$primary-color;
+	  			border-radius:$border-radius;
+	  			color:$white;
+
+	  			.info-text {
+	  				margin: 0.5em;
+	  				color:$white;
+	  			}
+
+	  			h2 {
+	  				font-size:3.5em;
+	  				margin:0em;
+	  			}
+  			}
+
+  		}
+  }
+
+  .lead-card {
+  	margin:0.75em auto;
+  	&:hover {
+		@include box_shadow(2);
+		cursor:pointer;
+	}
+  }
+
+  //max-width: $device-lg;
+}
+
+.container:after, .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.align-middle {
+    align-items: center;
+}
+
+.align-bottom {
+    align-items: flex-end;
+}
+
+.align-left {
+    justify-content: flex-start;
+	}
+.align-center {
+    justify-content: center;
+	}
+.align-right {
+    justify-content: flex-end;
+	}
+.align-auto {
+    justify-content: space-around;
+	}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: -($column-gutter/2);
+  margin-left: -($column-gutter/2);
+}
+
+[class*="col"] {
+  width: 100%;
+  padding: 0 $column-gutter*2;
+}
+
+@mixin col-size($col) {
+  flex-basis: (100% * $col / 12);
+  max-width: (100% * $col / 12);
+}
+
+@each $col in (1,2,3,4,5,6,7,8,9,10,11,12) {
+  .col-xs-#{$col} {
+    @include col-size($col);
+   }
+
+@media (min-width: #{$device-sm}) {
+  html, body {
+    font-size: 12px;
+   }
+  @each $col in (1,2,3,4,5,6,7,8,9,10,11,12) {
+    .col-sm-#{$col} {
+      @include col-size($col);
+    }
+   }
+}
+@media (min-width: #{$device-md}) {
+  html, body {
+    font-size: 14px;
+  }
+  @each $col in (1,2,3,4,5,6,7,8,9,10,11,12) {
+    .col-md-#{$col}{
+      @include col-size($col);
+    }
+    }
+}
+@media (min-width: #{$device-lg}) {
+  @each $col in (1,2,3,4,5,6,7,8,9,10,11,12) {
+    .col-lg-#{$col}{
+      @include col-size($col);
+    }
+  }
+}
+}
 
 
 
