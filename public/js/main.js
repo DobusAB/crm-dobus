@@ -14850,9 +14850,9 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-0b167fbc", module.exports)
+    hotAPI.createRecord("_v-62a258d6", module.exports)
   } else {
-    hotAPI.update("_v-0b167fbc", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-62a258d6", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"vue":5,"vue-hot-reload-api":2}],7:[function(require,module,exports){
@@ -14886,9 +14886,9 @@ if (module.hot) {(function () {  module.hot.accept()
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   if (!module.hot.data) {
-    hotAPI.createRecord("_v-135e36fa", module.exports)
+    hotAPI.createRecord("_v-11645f53", module.exports)
   } else {
-    hotAPI.update("_v-135e36fa", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
+    hotAPI.update("_v-11645f53", module.exports, (typeof module.exports === "function" ? module.exports.options : module.exports).template)
   }
 })()}
 },{"./dashboard.vue":6,"vue":5,"vue-hot-reload-api":2}],8:[function(require,module,exports){
