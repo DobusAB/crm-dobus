@@ -28,10 +28,12 @@
             <span>&#x1f646;</span>
             <h3>{{detail.company_name}}</h3>
             <p class="info-text">{{detail.address}}</p>
+			<p class="info-text">{{detail.phone}}</p>
+			<p class="info-text">{{detail.email}}</p>
             <form>
-              <p class="info-text">Här kan du lägga till uppgifter om din lead. Ju mer du skriver desto större är chansen att din lead nappar.</p>
-              <input type="text" placeholder="Namn"></input>
-              <input type="text" placeholder="Email"></input>
+              <p class="info-text">Här kan du lägga till uppgifter om din lead.</p>
+              <input type="text" placeholder="Kontaktperson" value="{{detail.contact_person}}"></input>
+              <input type="text" placeholder="Email" value="{{detail.email}}"></input>
               <button class="lead-button medium block-button primary">Spara uppgifter</button>
             </form>
         </div>
@@ -51,7 +53,7 @@
     </div>
 
     <div class="container" droppable="true" @dragover.prevent @drop="drop">
-    <div class="overlay"></div>
+    <div class="overlay" @click="closeOverlay()" v-bind:class="{ 'open': overlayIsShowing}"></div>
     <div class="row lead-header">
         <div class=" col-md-2 col-sm-4 col-xs-4 align-middle lead-filter-wrapper">
           <div class="lead-filter">
@@ -68,9 +70,7 @@
           <div class="lead-card" @click="showDetail(lead)">
             <span>&#x1f646;</span>
             <h3>{{lead.company_name}}</h3>
-            <p class="info-text">{{lead.address}}</p>
-			<p class="info-text">{{lead.phone}}</p>
-			<p class="info-text">{{lead.email}}</p>
+			<p class="info-text">{{lead.address}}</p>
             <div class="lead-status-container align-center align-middle">
               <span class="emoji-icon">🙈</span>Inväntar svar
             </div>
@@ -92,15 +92,23 @@ export default {
      city: "halmstad",
      startIndex: 1,
 	 drawerIsOpened: false,
-	 detailIsOpened: false
+	 detailIsOpened: false,
+	 overlayIsShowing: false
     }
   },
   methods: {
+   closeOverlay: function() {
+	   this.detailIsOpened = false;
+	   this.drawerIsOpened = false;
+	   this.overlayIsShowing = false;
+   },
    showDrawer: function() {
 	   this.drawerIsOpened = !this.drawerIsOpened;
+	   this.overlayIsShowing = true;
    },
    showDetail: function(lead) {
 	   this.detailIsOpened = true;
+	   this.overlayIsShowing = true;
 	   this.detail = lead;
    },
    getLeads: function(){
@@ -135,6 +143,8 @@ export default {
 	}, function (response) {
 		//error callback
 	});
+
+	this.closeOverlay();
    },
    getCompanies: function(){
    		this.$http({url: 'http://localhost:8000/api/companies?city='+this.city+'&query=frisör&from=1&to=25', method: 'GET'}).then(function (response) {
