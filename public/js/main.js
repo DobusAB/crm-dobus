@@ -14543,12 +14543,31 @@ exports.default = {
         // error callback
       }.bind(this));
     },
+    phoneNumberIsEmpty: function phoneNumberIsEmpty(item) {
+      if (!item.phoneNumbers[0]) {
+        //    item.phoneNumbers = [''];
+        return true;
+      }
+    },
     addLead: function addLead(item) {
-      this.$http.post('http://localhost:8000/api/lead', [item.companyInfo.companyName]).then(function (response) {
-        console.log(response);
+      if (this.phoneNumberIsEmpty(item)) {
+        item.phoneNumbers = [''];
+      }
+      item = {
+        company_name: item.companyInfo.companyName,
+        address: item.address.streetName,
+        corporate_identity_number: item.companyInfo.orgNumber,
+        phone: item.phoneNumbers[0].phoneNumber,
+        contact_person: null,
+        email: null,
+        homepage: item.homepage
+      };
+      this.$http.post('http://localhost:8000/api/lead', item).then(function (response) {
+        console.log(item);
+        this.getLeads();
       }, function (response) {
         //error callback
-      }.bind(this));
+      });
     },
     getCompanies: function getCompanies() {
       this.$http({ url: 'http://localhost:8000/api/companies?city=' + this.city + '&query=frisör&from=1&to=25', method: 'GET' }).then(function (response) {

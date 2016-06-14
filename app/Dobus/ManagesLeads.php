@@ -23,9 +23,34 @@ class ManagesLeads {
     {
         $lead = $lead->all();
         $lead['status'] = $this->status->leadCreated();
+
+        if ($lead['corporate_identity_number'] == null) {
+            $lead['corporate_identity_number'] = '';
+        }
+
+        if ($lead['homepage'] == null) {
+            $lead['email'] = null;
+
+            if (!$this->leadExists($lead)) {
+                return Lead::create($lead);
+            }
+        }
+
         $lead['email'] = $this->getEmailFromHompage($lead['homepage']);
 
-        return Lead::create($lead);
+        if (!$this->leadExists($lead)) {
+            return Lead::create($lead);
+        }
+    }
+
+    private function leadExists($lead)
+    {
+        $lead = Lead::where('corporate_identity_number', $lead['corporate_identity_number'])->exists();
+        if (!$lead) {
+            return false;
+        }
+
+        return true;
     }
 
     private function getEmailFromHompage($homepage)
