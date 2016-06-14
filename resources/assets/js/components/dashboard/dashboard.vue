@@ -3,10 +3,10 @@
 		<div class="lead-drawer" v-bind:class="{ 'open': drawerIsOpened}">
       <div class="lead-search-header">
         <select>
-          <option> &#x1f64f; - Halmstad</option>
+          <option value="Halmstad"> &#x1f64f; - Halmstad</option>
         </select>
         <select>
-          <option> &#x1f646; - Frisör</option>
+          <option value="Frisör"> &#x1f646; - Frisör</option>
         </select>
         <button class="lead-button medium block-button primary">Sök leads</button>
       </div>
