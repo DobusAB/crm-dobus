@@ -51,7 +51,7 @@
     </div>
 
     <div class="container" droppable="true" @dragover.prevent @drop="drop">
-
+    <div class="overlay"></div>
     <div class="row lead-header">
         <div class=" col-md-2 col-sm-4 col-xs-4 align-middle lead-filter-wrapper">
           <div class="lead-filter">
