@@ -1,6 +1,6 @@
 <template>
-	<div class="main-container" @dragover.prevent @drop="drop">
-		<div class="lead-drawer open">
+	<div class="main-container">
+		<div class="lead-drawer" v-bind:class="{ 'open': drawerIsOpened}">
       <div class="lead-search-header">
         <select>
           <option> &#x1f64f; - Halmstad</option>
@@ -23,11 +23,11 @@
 		</div>
 
     <!-- Add class '.open' to open the menu when a lead-card is pressed -->
-    <div class="lead-detail">
+    <div class="lead-detail" v-bind:class="{ 'open': detailIsOpened}">
         <div class="lead-card">
             <span>&#x1f646;</span>
-            <h3>Häftiga företaget</h3>
-            <p class="info-text">Glada gatan</p>
+            <h3>{{detail.company_name}}</h3>
+            <p class="info-text">{{detail.address}}</p>
             <form>
               <p class="info-text">Här kan du lägga till uppgifter om din lead. Ju mer du skriver desto större är chansen att din lead nappar.</p>
               <input type="text" placeholder="Namn"></input>
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" droppable="true" @dragover.prevent @drop="drop">
 
     <div class="row lead-header">
         <div class=" col-md-2 col-sm-4 col-xs-4 align-middle lead-filter-wrapper">
@@ -60,11 +60,12 @@
             <p class="info-text">Du har skickat 5 mail.</p>
           </div>
         </div>
+		<button @click="showDrawer()" class="lead-button medium secondary">Öppna företagslådan</button>
     </div>
     <!--- Insert 4 leads in each row -->
   		<div class="row">
         <div v-for="lead in leads" class="col-sm-6 col-md-4 col-lg-3 align-middle">
-          <div class="lead-card">
+          <div class="lead-card" @click="showDetail(lead)">
             <span>&#x1f646;</span>
             <h3>{{lead.company_name}}</h3>
             <p class="info-text">{{lead.address}}</p>
@@ -87,11 +88,21 @@ export default {
     return {
 	 leads: [],
      items: [],
+	 detail: [],
      city: "halmstad",
-     startIndex: 1
+     startIndex: 1,
+	 drawerIsOpened: false,
+	 detailIsOpened: false
     }
   },
   methods: {
+   showDrawer: function() {
+	   this.drawerIsOpened = !this.drawerIsOpened;
+   },
+   showDetail: function(lead) {
+	   this.detailIsOpened = true;
+	   this.detail = lead;
+   },
    getLeads: function(){
 	   this.$http({url: 'http://localhost:8000/api/leads', method: 'GET'}).then(function (response) {
 		 this.leads = response.data;

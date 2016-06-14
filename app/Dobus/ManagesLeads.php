@@ -46,6 +46,10 @@ class ManagesLeads {
     private function leadExists($lead)
     {
         $lead = Lead::where('corporate_identity_number', $lead['corporate_identity_number'])->exists();
+        // if ($lead['corporate_identity_number'] == '') {
+        //     return false;
+        // }
+
         if (!$lead) {
             return false;
         }
