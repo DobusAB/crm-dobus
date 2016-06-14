@@ -25,7 +25,8 @@ select {
   -moz-appearance: none;
   background-color: #FFFFFF; }
   select:hover {
-    background-color: #f9f9f9; }
+    background-color: #f9f9f9;
+    cursor: pointer; }
 
 .info-text {
   text-align: center;
@@ -52,10 +53,27 @@ select {
   text-shadow: none;
   border: none;
   box-shadow: none; }
+  .lead-button.image-button {
+    height: 30px;
+    width: 30px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex; }
+    .lead-button.image-button svg {
+      height: 15px;
+      width: 15px; }
+  .lead-button.fixed-button {
+    position: absolute;
+    top: 0;
+    right: 1em; }
   .lead-button.primary {
     background-color: #50E3C2; }
     .lead-button.primary:hover {
-      background-color: #45e1be; }
+      background-color: #45e1be;
+      cursor: pointer; }
   .lead-button.medium {
     height: 2.5em;
     padding: 0em 1.5em; }
@@ -68,7 +86,8 @@ select {
   .lead-button.secondary {
     background-color: lightgray; }
     .lead-button.secondary:hover {
-      background-color: #cdcdcd; }
+      background-color: #cdcdcd;
+      cursor: pointer; }
   .lead-button.block-button {
     width: 100%; }
   .lead-button:hover {
@@ -78,6 +97,7 @@ select {
 .lead-card {
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
@@ -200,8 +220,8 @@ select {
     height: 100%;
     width: 100%;
     background-color: #000;
-    position: absolute;
-    z-index: 0;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     opacity: 0;
@@ -222,6 +242,27 @@ select {
       display: -ms-flexbox;
       display: flex;
       max-width: 130px; }
+      .container .lead-header .lead-filter-wrapper .lead-search {
+        border-radius: 50%;
+        height: 75px;
+        width: 75px;
+        display: -ms-flexbox;
+        display: flex;
+        margin: 0 auto;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #50E3C2; }
+        .container .lead-header .lead-filter-wrapper .lead-search:hover {
+          background-color: #45e1be;
+          cursor: pointer; }
+        .container .lead-header .lead-filter-wrapper .lead-search svg {
+          height: 25px;
+          width: 25px; }
       .container .lead-header .lead-filter-wrapper .lead-filter {
         height: 160px;
         -ms-flex: 1;
@@ -238,7 +279,11 @@ select {
         margin-top: 1em;
         background-color: #4A90E2;
         border-radius: 4px;
-        color: #FFFFFF; }
+        color: #FFFFFF;
+        background-color: #4A90E2; }
+        .container .lead-header .lead-filter-wrapper .lead-filter:hover {
+          background-color: #3f89e0;
+          cursor: pointer; }
         .container .lead-header .lead-filter-wrapper .lead-filter .info-text {
           margin: 0.5em;
           color: #FFFFFF; }
