@@ -2,6 +2,10 @@
 
 namespace App\Dobus;
 
+use Goutte;
+
+use App\Dobus\ValidatesEmail;
+
 class Eniro {
     private $profile;
     private $key;
@@ -27,7 +31,12 @@ class Eniro {
 
     public function getCompanies()
     {
-        $response = json_decode(file_get_contents(
+        return $this->getAllCompanies()->withHomepage();
+    }
+
+    private function getAllCompanies()
+    {
+        $this->response = json_decode(file_get_contents(
             $this->baseUrl .
             'profile=' . $this->profile .
             '&key=' . $this->key .
@@ -39,6 +48,47 @@ class Eniro {
             '&to_list=' . $this->to
         ), true);
 
-        return $response;
+        return $this;
     }
+
+    private function withHomepage()
+    {
+        $this->results = [];
+
+        foreach ($this->response['adverts'] as $item) {
+            if ($item['homepage'] != null) {
+                $item['email'] = $this->getHomepageUrl($item['homepage'])->withEmail();
+                array_push($this->results, $item);
+            }
+        }
+
+        return $this->results;
+    }
+
+    private function getHomepageUrl($item)
+    {
+        $crawler = Goutte::request('GET', $item);
+        $url = $crawler->filter('meta')->first()->attr('content');
+
+        $this->url = str_replace('0;url=', '', $url);
+        $this->url = str_replace('https://', 'http://', $this->url);
+        $this->url = str_replace('http://', '', $this->url);
+        $this->url = str_replace('www.', '', $this->url);
+
+        return $this;
+    }
+
+    private function withEmail()
+    {
+        $validator = new ValidatesEmail();
+        
+        return $validator->findValidEmailFrom($this->url);
+    }
+
+    // public function findValidEmailFrom($url)
+    // {
+    //     $validator = new ValidatesEmail();
+
+    //     return $validator->findValidEmailFrom($url);
+    // }
 }

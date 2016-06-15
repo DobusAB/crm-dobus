@@ -2,21 +2,27 @@
   <div class="main-container">
     <div class="lead-drawer" v-bind:class="{ 'open': drawerIsOpened}">
       <div class="lead-search-header">
-        <select>
-          <option value="Halmstad"> &#x1f64f; - Halmstad</option>
+        <select v-model="selectedCity" @change="getCompanies()">
+          <option v-for="option in cityOptions" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
         </select>
-        <select>
-          <option value="Frisör"> &#x1f646; - Frisör</option>
+        <span>{{selectedCity}}</span>
+        <select v-model="selectedIndustry" @change="getCompanies()">
+          <option v-for="option in industryOptions" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
         </select>
+        <span>{{selectedIndustry}}</span>
         <button class="lead-button medium block-button primary">Sök leads</button>
       </div>
       <p class="info-text">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>
       <div class="lead-card" v-for="item in items" draggable="true">
         <span>&#x1f646;</span>
-        <h3>{{item.companyInfo.companyName}}</h3>
+        <h3>{{item.companyInfo.companyName}}{{item.email}}</h3>
         <p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
         <p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
-        <button class="lead-button medium secondary">Spana på Allabolag.se</button>
+        <button class="lead-button medium secondary" v-on:click="allaBolag(item)">Spana på Allabolag.se</button>
         <button v-on:click="addLead(item)" class="lead-button image-button fixed-button secondary">
           <svg width="36px" height="36px" viewBox="365 846 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="Group-11" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(365.000000, 846.000000)">
@@ -44,7 +50,7 @@
               <button class="lead-button medium block-button primary">Spara uppgifter</button>
             </form>
         </div>
-        <h3>Senaste händelserna</h3>
+<!--         <h3>Senaste händelserna</h3>
         <div class="lead-activity align-right">
           <div class="lead-activity-block">
             <span>Inväntar svar</span>
@@ -56,7 +62,7 @@
           <div class="lead-activity-block">
 
           </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="container" droppable="true" @dragover.prevent @drop="drop">
@@ -100,14 +106,26 @@
 export default {
   data () {
     return {
-   leads: [],
-     items: [],
-   detail: [],
-     city: "halmstad",
-     startIndex: 1,
-   drawerIsOpened: false,
-   detailIsOpened: false,
-   overlayIsShowing: false
+      leads: [],
+      items: [],
+      detail: [],
+      startIndex: 1,
+      drawerIsOpened: false,
+      detailIsOpened: false,
+      overlayIsShowing: false,
+
+      selectedCity: 'Halmstad',
+      cityOptions: [
+        { text: 'Halmstad', value: 'Halmstad' },
+        { text: 'Malmö', value: 'Malmö' },
+        { text: 'Göteborg', value: 'Göteborg' }
+      ],
+      selectedIndustry: 'Frisör',
+      industryOptions: [
+        { text: 'Frisör', value: 'Frisör' },
+        { text: 'Webb', value: 'Webb' },
+        { text: 'Tandläkare', value: 'Tandläkare' }
+      ],
     }
   },
   methods: {
@@ -138,6 +156,13 @@ export default {
        return true;
      }
    },
+   // allaBolag: function (item) {
+   //  var name = encodeURIComponent(item.companyInfo.companyName);
+   //  var city = encodeURIComponent(this.selectedCity);
+   //  var url = 'http://www.allabolag.se/?what=' + name + '&where=' + city;
+   //  var win = window.open(url, '_blank');
+   //  win.focus();
+   // },
    addLead: function(item){
   if (this.phoneNumberIsEmpty(item)) {
     item.phoneNumbers = ['']
@@ -161,8 +186,9 @@ export default {
   this.closeOverlay();
    },
    getCompanies: function(){
-      this.$http({url: 'http://localhost:8000/api/companies?city='+this.city+'&query=frisör&from=1&to=25', method: 'GET'}).then(function (response) {
-          this.items = response.data.adverts;
+      this.$http({url: 'http://localhost:8000/api/companies?city=' + this.selectedCity + '&query=' + this.selectedIndustry + '&from=1&to=25', method: 'GET'}).then(function (response) {
+          this.items = response.data;
+          console.log(this.items);  
         }, function (response) {
           // error callback
       }.bind(this));
@@ -171,13 +197,13 @@ export default {
 
       var startindex = this.startIndex += 25;
       var endIndex = startindex + 24;
-      this.$http({url: 'http://localhost:8000/api/companies?city='+this.city+'&query=frisör&from='+startindex+'&to=' + endIndex, method: 'GET'}).then(function (response) {
+      this.$http({url: 'http://localhost:8000/api/companies?city=' + this.selectedCity + '&query=' + this.selectedIndustry + '&from=' + startindex + '&to=' + endIndex, method: 'GET'}).then(function (response) {
 
-        var data = response.data.adverts;
-        var dataLength = response.data.adverts.length;
+        var data = response.data;
+        var dataLength = response.data.length;
         for(var i = 0; i < dataLength; i++)
         {
-          this.items.push(response.data.adverts[i]);
+          this.items.push(response.data[i]);
         }
         }, function (response) {
           // error callback

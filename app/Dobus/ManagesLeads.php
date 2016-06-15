@@ -60,7 +60,7 @@ class ManagesLeads {
     private function getEmailFromHompage($homepage)
     {
         $this->homepage = $homepage;
-
+         
         return $this->homepage()->findEmail()->get();
     }
 
