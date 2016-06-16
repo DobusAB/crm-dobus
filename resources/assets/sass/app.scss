@@ -101,7 +101,29 @@ select {
 	margin-right:$margin-top;
 }
 
-.loader-button{
+
+@keyframes rotate {
+  0%    { transform:rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}
+
+
+.lead-button {
+	width:auto;
+	font-weight:700;
+	font-size:1.3em;
+	font-family: $primary-font;
+    border-radius: $border-radius;
+    color:$white;
+	outline: none;
+    appearance: none;
+    position:relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-shadow:none;
+	border:none;
+	box-shadow:none;
+
 	display:flex;
 	justify-content:center;
 
@@ -151,29 +173,6 @@ select {
 	      width:20px;
 	    }
 	  }
-}
-
-@keyframes rotate {
-  0%    { transform:rotate(0deg); }
-  100%  { transform: rotate(360deg); }
-}
-
-
-.lead-button {
-	width:auto;
-	font-weight:700;
-	font-size:1.3em;
-	font-family: $primary-font;
-    border-radius: $border-radius;
-    color:$white;
-	outline: none;
-    appearance: none;
-    position:relative;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-shadow:none;
-	border:none;
-	box-shadow:none;
 
 	&.image-button {
 		height:30px;

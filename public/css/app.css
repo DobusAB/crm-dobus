@@ -43,50 +43,6 @@ select {
 .emoji-icon {
   margin-right: 1em; }
 
-.loader-button {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center; }
-  .loader-button:before {
-    content: '';
-    position: absolute;
-    right: 1em;
-    top: 50%;
-    margin-top: -9px;
-    width: 20px;
-    height: 20px;
-    border: 4px solid;
-    border-left-color: transparent;
-    border-radius: 50%;
-    opacity: 0;
-    transition-duration: .5s;
-    transition-property: opacity;
-    animation-duration: 0.4s;
-    animation-iteration-count: infinite;
-    animation-name: rotate;
-    animation-timing-function: linear; }
-  .loader-button:after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    width: 0px;
-    transition-delay: .2s;
-    transition-duration: .3s;
-    transition-property: width; }
-  .loader-button.loading {
-    pointer-events: none;
-    cursor: not-allowed; }
-    .loader-button.loading:not(.expand) {
-      text-align: left; }
-    .loader-button.loading:before {
-      transition-delay: .5s;
-      transition-duration: 0.4s;
-      opacity: 1; }
-    .loader-button.loading:after {
-      transition-delay: 0s;
-      width: 20px; }
-
 @keyframes rotate {
   0% {
     transform: rotate(0deg); }
@@ -109,7 +65,49 @@ select {
   -moz-appearance: none;
   text-shadow: none;
   border: none;
-  box-shadow: none; }
+  box-shadow: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .lead-button:before {
+    content: '';
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    margin-top: -9px;
+    width: 20px;
+    height: 20px;
+    border: 4px solid;
+    border-left-color: transparent;
+    border-radius: 50%;
+    opacity: 0;
+    transition-duration: .5s;
+    transition-property: opacity;
+    animation-duration: 0.4s;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    animation-timing-function: linear; }
+  .lead-button:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0px;
+    transition-delay: .2s;
+    transition-duration: .3s;
+    transition-property: width; }
+  .lead-button.loading {
+    pointer-events: none;
+    cursor: not-allowed; }
+    .lead-button.loading:not(.expand) {
+      text-align: left; }
+    .lead-button.loading:before {
+      transition-delay: .5s;
+      transition-duration: 0.4s;
+      opacity: 1; }
+    .lead-button.loading:after {
+      transition-delay: 0s;
+      width: 20px; }
   .lead-button.image-button {
     height: 30px;
     width: 30px;
