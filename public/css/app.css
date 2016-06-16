@@ -43,6 +43,56 @@ select {
 .emoji-icon {
   margin-right: 1em; }
 
+.loader-button {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .loader-button:before {
+    content: '';
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    margin-top: -9px;
+    width: 20px;
+    height: 20px;
+    border: 4px solid;
+    border-left-color: transparent;
+    border-radius: 50%;
+    opacity: 0;
+    transition-duration: .5s;
+    transition-property: opacity;
+    animation-duration: 0.4s;
+    animation-iteration-count: infinite;
+    animation-name: rotate;
+    animation-timing-function: linear; }
+  .loader-button:after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 0px;
+    transition-delay: .2s;
+    transition-duration: .3s;
+    transition-property: width; }
+  .loader-button.loading {
+    pointer-events: none;
+    cursor: not-allowed; }
+    .loader-button.loading:not(.expand) {
+      text-align: left; }
+    .loader-button.loading:before {
+      transition-delay: .5s;
+      transition-duration: 0.4s;
+      opacity: 1; }
+    .loader-button.loading:after {
+      transition-delay: 0s;
+      width: 20px; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 .lead-button {
   width: auto;
   font-weight: 700;
@@ -51,7 +101,10 @@ select {
   border-radius: 4px;
   color: #FFFFFF;
   outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
+  position: relative;
   -webkit-appearance: none;
   -moz-appearance: none;
   text-shadow: none;
@@ -69,10 +122,14 @@ select {
     .lead-button.image-button svg {
       height: 15px;
       width: 15px; }
-  .lead-button.fixed-button {
+  .lead-button.fixed-button-right {
     position: absolute;
     top: 0;
     right: 1em; }
+  .lead-button.fixed-button-left {
+    position: absolute;
+    top: 0;
+    left: 1em; }
   .lead-button.primary {
     background-color: #50E3C2; }
     .lead-button.primary:hover {
@@ -214,7 +271,7 @@ select {
     .main-container .lead-drawer .lead-card {
       margin: 2em auto; }
       .main-container .lead-drawer .lead-card:hover {
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         cursor: pointer; }
 
 .container {

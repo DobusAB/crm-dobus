@@ -7,13 +7,11 @@
             {{ option.text }}
           </option>
         </select>
-        <span>{{selectedCity}}</span>
         <select v-model="selectedIndustry" @change="getCompanies()">
           <option v-for="option in industryOptions" v-bind:value="option.value">
             {{ option.text }}
           </option>
         </select>
-        <span>{{selectedIndustry}}</span>
         <button class="lead-button medium block-button primary">Sök leads</button>
       </div>
       <p class="info-text">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>
@@ -22,8 +20,9 @@
         <h3>{{item.companyInfo.companyName}}</h3>
         <p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
         <p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
-        <button class="lead-button medium secondary" v-on:click="allaBolag(item)">Spana på Allabolag.se</button>
-        <button v-on:click="addLead(item)" class="lead-button image-button fixed-button secondary">
+        <!-- Add .loading to show loading indicator -->
+        <button class="lead-button medium secondary loader-button" v-on:click="allaBolag(item)">Kontrollera email</button>
+        <button v-on:click="addLead(item)" class="lead-button image-button fixed-button-right secondary">
           <svg width="36px" height="36px" viewBox="365 846 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="Group-11" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(365.000000, 846.000000)">
                   <rect id="Rectangle-31" fill="#FFFFFF" x="14" y="0" width="8" height="36" rx="4"></rect>
