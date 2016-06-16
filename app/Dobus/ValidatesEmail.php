@@ -36,6 +36,7 @@ class ValidatesEmail
 
 	public function findValidEmailFrom($url)
 	{
+		return 'hej';
 		$token = $this->getToken();
 		$email = $this->validate($url, $token);
 
@@ -62,7 +63,7 @@ class ValidatesEmail
 			'http://www.allabolag.se/ws/BIWS/service.php?' . 
 			'key=BIWS5da249669cc4a8f114d4929ab768' . 
 			'&type=fetch' . 
-			'&query=ba_postort:HALMSTAD%20AND%20jurnamn:fristil' . 
+			'&query=ba_postort:HALMSTAD%20AND%20jurnamn:hemsida24' . 
 			'&fields=orgnr,jurnamn,ba_postort,oms_X,anst_X,mgmt,ba_gatuadress,ba_postnr,ba_lan,riktnrtelnr,bolord'
 		);
 
@@ -75,14 +76,14 @@ class ValidatesEmail
 		// return $results[0];
 
 		$contactPerson = str_replace(',', '', strtolower($results[0])); // Get this from Allabolag API
-		// str_replace('0;url=', '', $url);
+
 		$cases = explode(' ', $contactPerson);
 
 		$casesCount = count($cases);
 		for ($i = 1; $i < $casesCount; $i++) { 
 			array_push($cases, $cases[$i] . '.' . $cases[0]);
 		}
-		return dd($cases);
+		// return dd($cases);
 
 		foreach ($cases as $case) {
 			$postdata = http_build_query(

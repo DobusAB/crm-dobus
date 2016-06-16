@@ -57,7 +57,7 @@ class Eniro {
 
         foreach ($this->response['adverts'] as $item) {
             if ($item['homepage'] != null) {
-                $item['email'] = $this->getHomepageUrl($item['homepage'])->withEmail();
+                $item['email'] = $this->getHomepageUrl('https://www.hemsida24.se')->withEmail();
 
                 if ($item['email'] != null) {
                     array_push($this->results, $item);
@@ -70,8 +70,9 @@ class Eniro {
 
     private function getHomepageUrl($item)
     {
-        $crawler = Goutte::request('GET', $item);
-        $url = $crawler->filter('meta')->first()->attr('content');
+        // $crawler = Goutte::request('GET', $item);
+        // $url = $crawler->filter('meta')->first()->attr('content');
+        $url = $item;
 
         $this->url = str_replace('0;url=', '', $url);
         $this->url = str_replace('https://', 'http://', $this->url);
@@ -85,7 +86,7 @@ class Eniro {
     {
         $validator = new ValidatesEmail();
         
-        return $validator->findValidEmailFrom($this->url);
+        return $validator->findValidEmailFrom($this->url); // Här ska även city och company_name skickas in för att hämta dynamisk data från allabolags API
     }
 
     // public function findValidEmailFrom($url)
