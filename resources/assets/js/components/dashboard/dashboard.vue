@@ -19,7 +19,7 @@
       <p class="info-text">Vi hittade <span>{{items.length}}</span> potentiella leads. Dra ut intressanta leads till höger för att komma igång och boka möten.</p>
       <div class="lead-card" v-for="item in items" draggable="true">
         <span>&#x1f646;</span>
-        <h3>{{item.companyInfo.companyName}}{{item.email}}</h3>
+        <h3>{{item.companyInfo.companyName}}</h3>
         <p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
         <p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
         <button class="lead-button medium secondary" v-on:click="allaBolag(item)">Spana på Allabolag.se</button>

@@ -58,7 +58,10 @@ class Eniro {
         foreach ($this->response['adverts'] as $item) {
             if ($item['homepage'] != null) {
                 $item['email'] = $this->getHomepageUrl($item['homepage'])->withEmail();
-                array_push($this->results, $item);
+
+                if ($item['email'] != null) {
+                    array_push($this->results, $item);
+                }
             }
         }
 
