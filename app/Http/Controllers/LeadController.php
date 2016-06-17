@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Dobus\ManagesLeads;
 
+use App\Dobus\SendEmail;
+
 class LeadController extends Controller
 {
     /**
@@ -24,5 +26,10 @@ class LeadController extends Controller
     public function store(Request $request, ManagesLeads $lead)
     {
         $lead->create($request);
+    }
+
+    public function sendEmail(Request $request, SendEmail $email)
+    {
+        return $email->send();
     }
 }

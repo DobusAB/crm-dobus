@@ -22,4 +22,6 @@ Route::group(['prefix' => 'api'], function() {
 
     Route::get('leads', 'LeadController@index');
     Route::post('lead', 'LeadController@store');
+    
+    Route::post('send/email', 'LeadController@sendEmail');
 });
