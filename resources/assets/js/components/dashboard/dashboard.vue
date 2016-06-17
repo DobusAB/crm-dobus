@@ -38,13 +38,13 @@
     <div class="lead-detail" v-bind:class="{ 'open': detailIsOpened}">
     <p>{{detail.longitude}}</p>
     <div class="map-view">
-    <iframe
-      width="100%"
-      height="150px"
-      frameborder="0" style="border:0;"
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhKXvNsQu8RScC1mAqnrFvwDfEVEhhI44
-        &q=Space+Needle,Seattle+WA">
-    </iframe>
+      <iframe
+        width="100%"
+        height="150px"
+        frameborder="0" style="border:0;"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhKXvNsQu8RScC1mAqnrFvwDfEVEhhI44
+          &q=Space+Needle,Seattle+WA">
+      </iframe>
     </div>
       <div class="lead-card">
             <span>&#x1f646;</span>
@@ -56,10 +56,11 @@
               <p class="info-text">Här kan du lägga till uppgifter om din lead.</p>
               <input type="text" placeholder="Kontaktperson" value="{{detail.contact_person}}"></input>
               <input type="text" placeholder="Email" value="{{detail.email}}"></input>
-              <button class="lead-button medium block-button primary">Spara uppgifter</button>
+              <button class="lead-button medium block-button primary">Lägg till i Mailchimp</button>
             </form>
         </div>
-<!--         <h3>Senaste händelserna</h3>
+<!--    
+<h3>Senaste händelserna</h3>
         <div class="lead-activity align-right">
           <div class="lead-activity-block">
             <span>Inväntar svar</span>
