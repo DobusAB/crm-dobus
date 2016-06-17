@@ -313,6 +313,14 @@ select {
 			transform: translateX(0px);
 		}
 
+		.map-view {
+			 border-radius:$border-radius; 
+			 overflow:hidden;
+			 position:relative;
+			 height:150px;
+			 margin-bottom:$margin-top;
+		}
+
 		.lead-activity {
 			display:flex;
 			flex-direction: column;

@@ -36,12 +36,22 @@
 
     <!-- Add class '.open' to open the menu when a lead-card is pressed -->
     <div class="lead-detail" v-bind:class="{ 'open': detailIsOpened}">
-        <div class="lead-card">
+    <p>{{detail.longitude}}</p>
+    <div class="map-view">
+    <iframe
+      width="100%"
+      height="150px"
+      frameborder="0" style="border:0;"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhKXvNsQu8RScC1mAqnrFvwDfEVEhhI44
+        &q=Space+Needle,Seattle+WA">
+    </iframe>
+    </div>
+      <div class="lead-card">
             <span>&#x1f646;</span>
             <h3>{{detail.company_name}}</h3>
             <p class="info-text">{{detail.address}}</p>
-      <p class="info-text">{{detail.phone}}</p>
-      <p class="info-text">{{detail.email}}</p>
+            <p class="info-text">{{detail.phone}}</p>
+            <p class="info-text">{{detail.email}}</p>
             <form>
               <p class="info-text">Här kan du lägga till uppgifter om din lead.</p>
               <input type="text" placeholder="Kontaktperson" value="{{detail.contact_person}}"></input>
@@ -189,7 +199,9 @@ export default {
     phone: item.phoneNumbers[0].phoneNumber,
     contact_person: null,
     email: null,
-    homepage: item.homepage
+    homepage: item.homepage,
+    longitude: item.location.coordinates.longitude,
+    latitude: item.location.coordinates.latitude
   }
   this.$http.post('http://localhost:8000/api/lead', item).then(function (response) {
     console.log(item);

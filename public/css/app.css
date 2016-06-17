@@ -215,6 +215,12 @@ select {
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
     .main-container .lead-detail.open {
       transform: translateX(0px); }
+    .main-container .lead-detail .map-view {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      height: 150px;
+      margin-bottom: 1em; }
     .main-container .lead-detail .lead-activity {
       display: -ms-flexbox;
       display: flex;

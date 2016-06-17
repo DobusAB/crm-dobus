@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Weidner\Goutte\GoutteServiceProvider::class,
+        Spatie\Newsletter\NewsletterServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -203,6 +204,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Goutte' => Weidner\Goutte\GoutteFacade::class,
+        'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
 
     ],
 
