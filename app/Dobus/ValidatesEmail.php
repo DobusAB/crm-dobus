@@ -36,7 +36,7 @@ class ValidatesEmail
 
 	public function findValidEmailFrom($url, $companyName, $city)
 	{
-		// return 'hej';
+		// return $url;
 		$token = $this->getToken();
 		$email = $this->validate($url, $companyName, $city, $token);
 
@@ -89,12 +89,16 @@ class ValidatesEmail
         {
             $cases = explode(' ', $contactPerson);
             $cases[0] = str_replace(',', '', $cases[0]);
+            $this->firstname = [$cases];
+            $this->lastname = ucfirst($cases[0]);
         } else{
             $cases = explode(' ', $contactPerson);
             $lastname = $cases[1];
             $firstname = $cases[0];
             $cases[0] = $lastname;
             $cases[1] = $firstname;
+            $this->firstname = ucfirst($firstname);
+            $this->lastname = ucfirst($lastname);
         }
         // return dd($cases);
 
@@ -125,7 +129,18 @@ class ValidatesEmail
 			$response = json_decode(file_get_contents('https://api.neverbounce.com/v3/single', false, $context), true);
 
 			if ($response['result'] == 0) {
-	            return $case . '@' . $url;
+				$email = $case . '@' . $url;
+				$firstname = explode('@', $email);
+
+				if (strpos($firstname[0], '.') !== false) {
+					$firstname = explode('.', $email);
+				}
+				
+	            return [
+	            	'firstname' => ucfirst($firstname[0]),
+	            	'lastname' => $this->lastname,
+	            	'email' => $case . '@' . $url
+	            ];
 	        }
     	}
 	}
