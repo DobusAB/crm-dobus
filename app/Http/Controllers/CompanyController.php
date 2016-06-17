@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Dobus\Eniro;
 
+use App\Dobus\GetsEmail;
+
 class CompanyController extends Controller
 {
     /**
@@ -29,5 +31,11 @@ class CompanyController extends Controller
         );
 
         return $eniro->getCompanies();
+    }
+
+    public function show(Request $request, $companyName)
+    {
+        $email = new GetsEmail();
+        return $email->withEmail($request, $companyName);
     }
 }

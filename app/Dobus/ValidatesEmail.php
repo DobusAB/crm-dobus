@@ -34,11 +34,11 @@ class ValidatesEmail
 		return $token['access_token'];
 	}
 
-	public function findValidEmailFrom($url)
+	public function findValidEmailFrom($url, $companyName, $city)
 	{
-		return 'hej';
+		// return 'hej';
 		$token = $this->getToken();
-		$email = $this->validate($url, $token);
+		$email = $this->validate($url, $companyName, $city, $token);
 
 		return $email;
 		/**
@@ -49,7 +49,7 @@ class ValidatesEmail
 		 */
 	}
 
-	private function validate($url, $token)
+	private function validate($url, $companyName, $city, $token)
 	{
 		// $allaBolagResponse = json_decode(file_get_contents(
 		// 	'http://www.allabolag.se/ws/BIWS/service.php?' . 
@@ -63,19 +63,25 @@ class ValidatesEmail
 			'http://www.allabolag.se/ws/BIWS/service.php?' . 
 			'key=BIWS5da249669cc4a8f114d4929ab768' . 
 			'&type=fetch' . 
-			'&query=ba_postort:HALMSTAD%20AND%20jurnamn:hemsida24' . 
+			'&query=ba_postort:' . $city . ' AND jurnamn:' . $companyName . 
 			'&fields=orgnr,jurnamn,ba_postort,oms_X,anst_X,mgmt,ba_gatuadress,ba_postnr,ba_lan,riktnrtelnr,bolord'
 		);
-
+		// return dd($allaBolagResponse);
 		$records = $allaBolagResponse->records[0];
 
 		$results = [];
 		foreach ($records as $record) {
 			array_push($results, $record->mgmt);
 		}
+		// return dd($results);
+		if (empty($results)) {
+			return 'Kunde inte hitta någon kontaktperson från allabolag';
+		}
 		// return $results[0];
 
-		$contactPerson = str_replace(',', '', strtolower($results[0])); // Get this from Allabolag API
+		$contactPerson = str_replace(',', '', strtolower($results[0]));
+
+		// return $contactPerson;
 
 		$cases = explode(' ', $contactPerson);
 

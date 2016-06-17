@@ -57,37 +57,41 @@ class Eniro {
 
         foreach ($this->response['adverts'] as $item) {
             if ($item['homepage'] != null) {
-                $item['email'] = $this->getHomepageUrl('https://www.hemsida24.se')->withEmail();
+                // $item['email'] = $this->getHomepageUrl('https://www.hemsida24.se')->withEmail();
 
-                if ($item['email'] != null) {
-                    array_push($this->results, $item);
-                }
+                // if ($item['email'] != null) {
+                //     array_push($this->results, $item);
+                // }
+                array_push($this->results, $item);
             }
         }
 
         return $this->results;
     }
 
-    private function getHomepageUrl($item)
-    {
-        // $crawler = Goutte::request('GET', $item);
-        // $url = $crawler->filter('meta')->first()->attr('content');
-        $url = $item;
+    // private function getHomepageUrl($item)
+    // {
+    //     $crawler = Goutte::request('GET', $item);
+    //     $url = $crawler->filter('meta')->first()->attr('content');
+    //     // $url = $item;
 
-        $this->url = str_replace('0;url=', '', $url);
-        $this->url = str_replace('https://', 'http://', $this->url);
-        $this->url = str_replace('http://', '', $this->url);
-        $this->url = str_replace('www.', '', $this->url);
+    //     $this->url = str_replace('0;url=', '', $url);
+    //     $this->url = str_replace('https://', 'http://', $this->url);
+    //     $this->url = str_replace('http://', '', $this->url);
+    //     $this->url = str_replace('www.', '', $this->url);
 
-        return $this;
-    }
+    //     return $this->url;
+    // }
 
-    private function withEmail()
-    {
-        $validator = new ValidatesEmail();
+    // public function withEmail($request, $companyName)
+    // {
+    //     $url = $this->getHomepageUrl($request->homepage);
+    //     $city = $request->city;
+
+    //     $validator = new ValidatesEmail();
         
-        return $validator->findValidEmailFrom($this->url); // Här ska även city och company_name skickas in för att hämta dynamisk data från allabolags API
-    }
+    //     return $validator->findValidEmailFrom($url, $companyName, $city); // Här ska även city och company_name samt homepage skickas in för att hämta dynamisk data från allabolags API
+    // }
 
     // public function findValidEmailFrom($url)
     // {
