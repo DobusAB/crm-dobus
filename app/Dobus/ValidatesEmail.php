@@ -66,9 +66,8 @@ class ValidatesEmail
 			'&query=ba_postort:' . $city . ' AND jurnamn:' . $companyName . 
 			'&fields=orgnr,jurnamn,ba_postort,oms_X,anst_X,mgmt,ba_gatuadress,ba_postnr,ba_lan,riktnrtelnr,bolord'
 		);
-		// return dd($allaBolagResponse);
+		
 		$records = $allaBolagResponse->records[0];
-
 		$results = [];
 		foreach ($records as $record) {
 			array_push($results, $record->mgmt);
@@ -135,7 +134,7 @@ class ValidatesEmail
 				if (strpos($firstname[0], '.') !== false) {
 					$firstname = explode('.', $email);
 				}
-				
+
 	            return [
 	            	'firstname' => ucfirst($firstname[0]),
 	            	'lastname' => $this->lastname,
