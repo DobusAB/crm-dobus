@@ -21,7 +21,7 @@
         <p class="info-text" v-if="item.address.postArea">{{item.address.streetName}}</p>
         <p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
         <!-- Add .loading to show loading indicator -->
-        <button class="lead-button medium secondary" v-on:click="allaBolag(item)">Kontrollera email</button>
+        <button class="lead-button medium secondary" v-on:click="getEmail(item)">Kontrollera email</button>
         <button v-on:click="addLead(item)" class="lead-button image-button fixed-button-right secondary">
           <svg width="36px" height="36px" viewBox="365 846 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="Group-11" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(365.000000, 846.000000)">
@@ -151,6 +151,16 @@ export default {
    getLeads: function(){
      this.$http({url: 'http://localhost:8000/api/leads', method: 'GET'}).then(function (response) {
      this.leads = response.data;
+     }, function (response) {
+     // error callback
+   }.bind(this));
+   },
+   getEmail: function(item){
+     this.$http({url: 'http://localhost:8000/api/company/'
+      + item.companyInfo.companyName 
+      + '/email?city=' + this.selectedCity 
+      + '&homepage=' + item.homepage, method: 'GET'}).then(function (response) {
+          console.log(response.data);
      }, function (response) {
      // error callback
    }.bind(this));
