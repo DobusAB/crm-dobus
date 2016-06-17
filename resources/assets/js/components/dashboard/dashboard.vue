@@ -43,7 +43,7 @@
         height="150px"
         frameborder="0" style="border:0;"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDhKXvNsQu8RScC1mAqnrFvwDfEVEhhI44
-          &q=Space+Needle,Seattle+WA">
+          &q={{detail.address}}">
       </iframe>
     </div>
       <div class="lead-card">
