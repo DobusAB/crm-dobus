@@ -79,11 +79,24 @@ class ValidatesEmail
 		}
 		// return $results[0];
 
-		$contactPerson = str_replace(',', '', strtolower($results[0]));
+		// $contactPerson = str_replace(',', '', strtolower($results[0]));
 
 		// return $contactPerson;
-
-		$cases = explode(' ', $contactPerson);
+		$contactPerson = strtolower($results[0]);
+		// $cases = explode(' ', $contactPerson);
+		$cases = explode(',', $contactPerson);
+        if(count($cases) > 1)
+        {
+            $cases = explode(' ', $contactPerson);
+            $cases[0] = str_replace(',', '', $cases[0]);
+        } else{
+            $cases = explode(' ', $contactPerson);
+            $lastname = $cases[1];
+            $firstname = $cases[0];
+            $cases[0] = $lastname;
+            $cases[1] = $firstname;
+        }
+        // return dd($cases);
 
 		$casesCount = count($cases);
 		for ($i = 1; $i < $casesCount; $i++) { 
