@@ -30,6 +30,6 @@ class LeadController extends Controller
 
     public function sendEmail(Request $request, SendEmail $email)
     {
-        return $email->send();
+        return $email->getUsers();
     }
 }

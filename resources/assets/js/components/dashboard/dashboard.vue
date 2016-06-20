@@ -174,6 +174,8 @@ export default {
       + '/email?city=' + this.selectedCity 
       + '&homepage=' + item.homepage, method: 'GET'}).then(function (response) {
           console.log(response.data);
+          this.contactPerson = response.data;
+          console.log(this.contactPerson.email);
           this.isLoading = false;
      }, function (response) {
      // error callback
@@ -196,13 +198,20 @@ export default {
   if (this.phoneNumberIsEmpty(item)) {
     item.phoneNumbers = ['']
   }
+
+  if (!this.contactPerson) {
+    this.contactPerson = '';
+  }
+item.selectedIndustry = this.selectedIndustry;
+console.log(item.selectedIndustry);
   item = {
     company_name: item.companyInfo.companyName,
     address: item.address.streetName,
     corporate_identity_number: item.companyInfo.orgNumber,
     phone: item.phoneNumbers[0].phoneNumber,
-    contact_person: null,
-    email: null,
+    contact_person: this.contactPerson.firstname + ' ' + this.contactPerson.lastname,
+    email: this.contactPerson.email,
+    industry_id: item.selectedIndustry,
     homepage: item.homepage,
     longitude: item.location.coordinates.longitude,
     latitude: item.location.coordinates.latitude
@@ -210,6 +219,7 @@ export default {
   this.$http.post('http://localhost:8000/api/lead', item).then(function (response) {
     console.log(item);
     this.getLeads();
+    
   }, function (response) {
     //error callback
   });

@@ -21,6 +21,7 @@ class CreateLeadsTable extends Migration
             $table->string('contact_person')->nullable();
             $table->string('email')->nullable();
             $table->string('status');
+            $table->string('industry_id');
             $table->timestamps();
         });
     }

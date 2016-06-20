@@ -36,7 +36,7 @@ class ManagesLeads {
             }
         }
 
-        $lead['email'] = $this->getEmailFromHompage($lead['homepage']);
+        // $lead['email'] = $this->getEmailFromHompage($lead['homepage']);
 
         if (!$this->leadExists($lead)) {
             return Lead::create($lead);

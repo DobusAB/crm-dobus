@@ -72,6 +72,12 @@ class ValidatesEmail
 		foreach ($records as $record) {
 			array_push($results, $record->mgmt);
 		}
+		// $results[0] = 'Örjan Härmansson';
+		// return dd($results);
+		if (count($results) > 0) {
+			$results = str_replace(['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], ['A', 'a', 'A', 'a', 'O', 'o'], $results[0]);
+		}
+		
 		// return dd($results);
 		if (empty($results)) {
 			return 'Kunde inte hitta någon kontaktperson från allabolag';
@@ -81,7 +87,8 @@ class ValidatesEmail
 		// $contactPerson = str_replace(',', '', strtolower($results[0]));
 
 		// return $contactPerson;
-		$contactPerson = strtolower($results[0]);
+		$contactPerson = strtolower($results);
+		// return dd($contactPerson);
 		// $cases = explode(' ', $contactPerson);
 		$cases = explode(',', $contactPerson);
         if(count($cases) > 1)

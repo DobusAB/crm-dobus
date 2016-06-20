@@ -26,14 +26,24 @@ return [
              * You can set it to any string you want and you can add
              * as many lists as you want.
              */
-            'subscribers' => [
+            'Webb' => [
 
                 /*
                  * A mail chimp list id. Check the mailchimp docs if you don't know
                  * how to get this value:
                  * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
                  */
-                'id' => env('MAILCHIMP_LIST_ID'),
+                'id' => env('MAILCHIMP_LIST_ID_WEBB'),
+            ],
+
+            'Frisör' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_FRISÖR'),
             ],
         ],
 ];
