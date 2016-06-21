@@ -26,6 +26,18 @@ return [
              * You can set it to any string you want and you can add
              * as many lists as you want.
              */
+            
+
+            'Frisör' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_FRISÖR'),
+            ],
+
             'Webb' => [
 
                 /*
@@ -36,14 +48,94 @@ return [
                 'id' => env('MAILCHIMP_LIST_ID_WEBB'),
             ],
 
-            'Frisör' => [
+            'Bilförsäljning' => [
 
                 /*
                  * A mail chimp list id. Check the mailchimp docs if you don't know
                  * how to get this value:
                  * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
                  */
-                'id' => env('MAILCHIMP_LIST_ID_FRISÖR'),
+                'id' => env('MAILCHIMP_LIST_ID_BILFÖRSÄLJNING'),
+            ],
+
+            'Reklam' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_REKLAM'),
+            ],
+
+            'Marknadsföring' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_MARKNADSFÖRING'),
+            ],
+
+            'Bygg' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_BYGG'),
+            ],
+
+            'Mäklare' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_MÄKLARE'),
+            ],
+
+            'Fastighet' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_FASTIGHET'),
+            ],
+
+            'Café' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_CAFE'),
+            ],
+
+            'Restaurang' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_RESTAURANG'),
+            ],
+
+            'Underhållning' => [
+
+                /*
+                 * A mail chimp list id. Check the mailchimp docs if you don't know
+                 * how to get this value:
+                 * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id
+                 */
+                'id' => env('MAILCHIMP_LIST_ID_UNDERHÅLLNING'),
             ],
         ],
 ];

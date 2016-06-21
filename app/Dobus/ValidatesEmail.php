@@ -69,14 +69,20 @@ class ValidatesEmail
 		
 		$records = $allaBolagResponse->records[0];
 		$results = [];
+		// return dd($records);
 		foreach ($records as $record) {
 			array_push($results, $record->mgmt);
 		}
+
 		// $results[0] = 'Örjan Härmansson';
 		// return dd($results);
+		$originalContactPerson = $results;
+		
+
 		if (count($results) > 0) {
 			$results = str_replace(['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], ['A', 'a', 'A', 'a', 'O', 'o'], $results[0]);
 		}
+		// $results = $results[0];
 		
 		// return dd($results);
 		if (empty($results)) {
@@ -85,8 +91,8 @@ class ValidatesEmail
 		// return $results[0];
 
 		// $contactPerson = str_replace(',', '', strtolower($results[0]));
+		
 
-		// return $contactPerson;
 		$contactPerson = strtolower($results);
 		// return dd($contactPerson);
 		// $cases = explode(' ', $contactPerson);
@@ -142,7 +148,48 @@ class ValidatesEmail
 					$firstname = explode('.', $email);
 				}
 
+				// $firstname = str_replace(['A', 'a', 'A', 'a', 'O', 'o'], ['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], $firstname);
+				// $this->lastname = str_replace(['A', 'a', 'A', 'a', 'O', 'o'], ['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], $this->lastname);
+
+				// $originalContactPerson = explode(' ', $originalContactPerson[0]);
+		        // if(count($originalContactPerson) > 1)
+		        // {
+		        //     $originalContactPerson = explode(' ', $originalContactPerson);
+		            
+		        // } else{
+		        //     $originalContactPerson = explode(' ', $originalContactPerson);
+		        // }
+		  //       $ogPerson = [];
+		  //       foreach ($originalContactPerson as $person) {
+		  //       	$origininalContactPersonRemove = str_replace(['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], ['A', 'a', 'A', 'a', 'O', 'o'], $person);
+		  //       	array_push($ogPerson, $origininalContactPersonRemove);
+		  //       }
+		  //       foreach ($ogPerson as $name) {
+		  //       	foreach ($originalContactPerson as $person) {
+		  //       		if ($name == $person) {
+		  //       			$originalContactPerson[0] = $person;
+		  //       		}
+		  //       	}
+		  //       }
+				// return $originalContactPerson;
+
+				// $originalNames = explode(' ', $originalContactPerson[0]);
+				// $firstname[0] = $originalNames[0];
+				// //för varje name
+				// $strReplaceFirstName = str_replace(['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], ['A', 'a', 'A', 'a', 'O', 'o'], $originalNames[0]);
+				
+				// if ($strReplaceFirstName == ucfirst($firstname[0])) {
+				// 	$strReplaceFirstNameBack = str_replace(['A', 'a', 'A', 'a', 'O', 'o'], ['Å', 'å', 'Ä', 'ä', 'Ö', 'ö'], $strReplaceFirstName);
+
+				// 	if ($strReplaceFirstNameBack == $originalNames[0]) {
+				// 		$firstname[0] = $strReplaceFirstNameBack;
+				// 	}
+					
+				// }
+				// return $firstname[0];
+
 	            return [
+	            	'originalName' => $originalContactPerson,
 	            	'firstname' => ucfirst($firstname[0]),
 	            	'lastname' => $this->lastname,
 	            	'email' => $case . '@' . $url

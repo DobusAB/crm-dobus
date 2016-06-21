@@ -11,5 +11,5 @@ class Lead extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_name', 'address', 'corporate_identity_number', 'phone', 'contact_person', 'email', 'status'];
+    protected $fillable = ['company_name', 'address', 'corporate_identity_number', 'phone', 'contact_person', 'email', 'status', 'industry_id'];
 }

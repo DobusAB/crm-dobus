@@ -22,6 +22,7 @@
         <p v-if="item.companyInfo.companyText">{{item.companyInfo.companyText}}</p>
         <!-- Add .loading to show loading indicator -->
         <button class="lead-button medium secondary" v-on:click="getEmail(item)" v-bind:class="{ 'loading': isLoading}">Kontrollera email</button>
+       
         <button v-on:click="addLead(item)" class="lead-button image-button fixed-button-right secondary">
           <svg width="36px" height="36px" viewBox="365 846 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="Group-11" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(365.000000, 846.000000)">
@@ -134,14 +135,29 @@ export default {
       selectedCity: 'Halmstad',
       cityOptions: [
         { text: 'Halmstad', value: 'Halmstad' },
+        { text: 'Falkenberg', value: 'Falkenberg' },
+        { text: 'Varberg', value: 'Varberg' },
+        { text: 'Kungsbacka', value: 'Kungsbacka' },
+        { text: 'Båstad', value: 'Båstad' },
+        { text: 'Laholm', value: 'Laholm' },
         { text: 'Malmö', value: 'Malmö' },
-        { text: 'Göteborg', value: 'Göteborg' }
+        { text: 'Göteborg', value: 'Göteborg' },
+        { text: 'Halland', value: 'Halland' }
       ],
       selectedIndustry: 'Frisör',
       industryOptions: [
         { text: 'Frisör', value: 'Frisör' },
         { text: 'Webb', value: 'Webb' },
-        { text: 'Tandläkare', value: 'Tandläkare' }
+        { text: 'Tandläkare', value: 'Tandläkare' },
+        { text: 'Bilförsäljning', value: 'Bilförsäljning' },
+        { text: 'Reklam', value: 'Reklam' },
+        { text: 'Marknadsföring', value: 'Marknadsföring' },
+        { text: 'Bygg', value: 'Bygg' },
+        { text: 'Mäklare', value: 'Mäklare' },
+        { text: 'Fastighet', value: 'Fastighet' },
+        { text: 'Café', value: 'Café' },
+        { text: 'Restaurang', value: 'Restaurang' },
+        { text: 'Underhållning', value: 'Underhållning' }
       ],
     }
   },
@@ -169,6 +185,7 @@ export default {
    },
    getEmail: function(item){
     this.isLoading = true;
+    this.contactPerson = null;
     this.$http({url: 'http://localhost:8000/api/company/'
       + item.companyInfo.companyName 
       + '/email?city=' + this.selectedCity 
@@ -211,7 +228,7 @@ console.log(item.selectedIndustry);
     phone: item.phoneNumbers[0].phoneNumber,
     contact_person: this.contactPerson.firstname + ' ' + this.contactPerson.lastname,
     email: this.contactPerson.email,
-    industry_id: item.selectedIndustry,
+    industry_id: this.selectedIndustry,
     homepage: item.homepage,
     longitude: item.location.coordinates.longitude,
     latitude: item.location.coordinates.latitude
